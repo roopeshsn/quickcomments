@@ -1,7 +1,8 @@
-import { Button, Heading } from "@chakra-ui/react";
+import { Button, Container, Heading } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
 import { useAuth } from "@/lib/auth";
+import Dashboard from "@/lib/components/DashboardTemplate";
 // import styles from "@/styles/Home.module.css";
 
 export default function Home() {
@@ -15,15 +16,15 @@ export default function Home() {
       </Head>
 
       <main>
-        <Heading>Quick Comments</Heading>
-
-        <Button onClick={signinWithGithub}>Signin</Button>
-        {user && <Button onClick={signout}>Signout</Button>}
+        <Heading mt={4} mb={4}>
+          Quick Comments
+        </Heading>
+        {user ? (
+          <Button onClick={signout}>Signout</Button>
+        ) : (
+          <Button onClick={signinWithGithub}>Signin</Button>
+        )}
       </main>
-
-      <footer>
-        <p>Copyright Quick Comments 2022</p>
-      </footer>
     </div>
   );
 }
