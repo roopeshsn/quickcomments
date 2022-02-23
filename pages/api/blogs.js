@@ -23,5 +23,5 @@ export default async function getBlogs(req, res) {
       ...doc.data(),
     });
   });
-  res.status(200).json(blogs);
+  res.status(200).json({ blogs });
 }

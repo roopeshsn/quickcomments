@@ -22,7 +22,7 @@ export default function Dashboard() {
       {data ? (
         <>
           <SiteHeader />
-          <SiteTable blogs={data} />
+          <SiteTable blogs={data.blogs} />
         </>
       ) : (
         <EmptyState />
