@@ -11,8 +11,6 @@ export default function Dashboard() {
   const { user } = useAuth();
   const { data } = useSWR("/api/blogs", fetcher);
 
-  console.log(data);
-
   if (!user) {
     return "Loading...";
   }

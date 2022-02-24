@@ -1,27 +1,9 @@
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  getFirestore,
-  query,
-  where,
-} from "firebase/firestore";
+import { getAllBlogs } from "@/lib/db-admin";
 
-const db = getFirestore();
-
-export default async function getBlogs(req, res) {
-  const q = query(
-    collection(db, "blogs"),
-    where("userId", "==", "w9XrkpSSyybQB4OdAVkAoRmQg4A2")
-  );
-  const querySnapshot = await getDocs(q);
-  const blogs = [];
-  querySnapshot.forEach((doc) => {
-    blogs.push({
-      id: doc.id,
-      ...doc.data(),
-    });
-  });
+export default async (req, res) => {
+  const { blogs, error } = await getAllBlogs();
+  if (error) {
+    res.status(500).json({ error });
+  }
   res.status(200).json({ blogs });
-}
+};
