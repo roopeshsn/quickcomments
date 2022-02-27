@@ -9,6 +9,8 @@ import SiteHeader from "@/lib/components/SiteHeader";
 
 export default function Dashboard() {
   const { user } = useAuth();
+  console.log(user);
+  // const { data } = useSWR(user ? ["/api/blogs", user.uid] : null, fetcher);
   const { data } = useSWR("/api/blogs", fetcher);
 
   if (!user) {
